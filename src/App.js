@@ -20,7 +20,7 @@ class App extends React.Component {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>TODO</h1>
+        <h1>TODO</h1> 
         <ul>
            {this.state.todos.map((todo) => {
             return(<TodoItem key={todo.id} text={todo.text}/>
@@ -32,7 +32,7 @@ class App extends React.Component {
         </ul>
         <h1> Hola React Taller-02</h1>
         <img src={logo} className="App-logo" alt="logo" />
-        <form action="" onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <input type="text" value={this.state.newTodo} onChange={this.handleChange}/>
           <button type='submit'>ADD TODO</button>
         </form>
@@ -47,7 +47,7 @@ class App extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
     this.setState( prevState => ({
-      todos: [],
+      todos: [...prevState.todos,{id: Date.now(), text: prevState.newTodo}],
       newTodo: '',
     }));
   }
